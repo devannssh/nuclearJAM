@@ -1,0 +1,28 @@
+{
+  "name": "@nuclearplayer/crossjam-server",
+  "version": "0.0.10",
+  "private": true,
+  "type": "module",
+  "description": "Relay server for Nuclear Cross Jam rooms",
+  "scripts": {
+    "dev": "tsx watch src/main.ts",
+    "start": "tsx src/main.ts",
+    "test": "vitest --run",
+    "test:watch": "vitest",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@nuclearplayer/model": "workspace:*",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@nuclearplayer/eslint-config": "workspace:*",
+    "@types/node": "^25.4.0",
+    "@types/ws": "^8.5.12",
+    "tsx": "^4.19.0",
+    "typescript": "^5.9.2",
+    "vitest": "^5.0.0"
+  }
+}

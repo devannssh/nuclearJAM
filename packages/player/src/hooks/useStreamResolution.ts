@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 
 import type { QueueItem } from '@nuclearplayer/model';
 
+import { consumeSuppressedAutoPlay } from '../services/crossJam/resolutionGate';
 import { streamResolution } from '../services/streamResolution';
 import { useQueueStore } from '../stores/queueStore';
 import { useStreamRecovery } from './useStreamRecovery';
@@ -33,7 +34,8 @@ export const useStreamResolution = (): void => {
         return;
       }
 
-      const autoPlay = !isFirstResolutionRef.current;
+      const autoPlay =
+        !isFirstResolutionRef.current && !consumeSuppressedAutoPlay();
       isFirstResolutionRef.current = false;
       void streamResolution.resolve(currentItem, { autoPlay });
     };

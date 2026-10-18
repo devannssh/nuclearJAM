@@ -35,7 +35,8 @@
     "playlists": "Playlists",
     "history": "History",
     "lyrics": "Lyrics",
-    "sources": "Sources"
+    "sources": "Sources",
+    "crossJam": "Cross Jam"
   },
   "history": {
     "title": "History",
@@ -487,6 +488,12 @@
           "title": "Discord Rich Presence",
           "description": "Show what you're listening to on your Discord profile."
         }
+      },
+      "crossJam": {
+        "serverUrl": {
+          "title": "Cross Jam server",
+          "description": "WebSocket address of the Cross Jam relay server, for example ws://localhost:4180/jam."
+        }
       }
     }
   },
@@ -671,6 +678,191 @@
       "chore": "Chore",
       "plugin": "Plugin",
       "docs": "Docs"
+    }
+  },
+  "crossJam": {
+    "title": "Cross Jam",
+    "setup": {
+      "title": "Set up Cross Jam",
+      "description": "Listen together with people who share your taste. Pick a name, choose the genres you love, and point Nuclear at a Cross Jam server.",
+      "serverUrl": "Server address",
+      "serverUrlPlaceholder": "ws://localhost:4180/jam",
+      "continue": "Continue"
+    },
+    "status": {
+      "connecting": "Connecting…",
+      "disconnected": "Not connected",
+      "connected": "Connected",
+      "retry": "Reconnect"
+    },
+    "tabs": {
+      "rooms": "Rooms",
+      "friends": "Friends",
+      "events": "Events",
+      "profile": "Profile"
+    },
+    "profile": {
+      "displayName": "Display name",
+      "displayNamePlaceholder": "How others see you",
+      "genres": "Your genres",
+      "genresDescription": "Rooms are ranked by how well their genres match yours. Pick up to {{max}}.",
+      "customGenre": "Add your own",
+      "addGenre": "Add",
+      "save": "Save profile",
+      "friendCode": "Your friend code",
+      "serverUrl": "Server address"
+    },
+    "rooms": {
+      "empty": "No rooms right now. Start one and be the host.",
+      "create": "Create room",
+      "refresh": "Refresh",
+      "joinWithCode": "Join with an invite code",
+      "codePlaceholder": "Invite code",
+      "join": "Join",
+      "match": "{{percent}}% match",
+      "listeners_one": "{{count}} listener",
+      "listeners_other": "{{count}} listeners",
+      "full": "Full",
+      "hostedBy": "Hosted by {{name}}",
+      "nothingPlaying": "Nothing playing yet",
+      "sortedByMatch": "Ranked by how well they match your genres"
+    },
+    "create": {
+      "title": "Create a room",
+      "name": "Room name",
+      "namePlaceholder": "Late night vibes",
+      "genres": "Genres",
+      "genresDescription": "Up to {{max}} tags that describe the room.",
+      "privacy": "Who can join",
+      "public": "Anyone, listed publicly",
+      "invite": "Invite code only",
+      "capacity": "Capacity",
+      "skipMode": "Skipping",
+      "skipAnyone": "Anyone can skip",
+      "skipVote": "Majority vote",
+      "skipHost": "Host and co-hosts only",
+      "submit": "Create room",
+      "cancel": "Cancel"
+    },
+    "room": {
+      "leave": "Leave",
+      "inviteCode": "Invite code",
+      "copyCode": "Copy code",
+      "addSongs": "Add songs",
+      "addSongsHint": "Search for a song and use Add to queue. It goes into the shared queue.",
+      "nowPlaying": "Now playing",
+      "nothingPlaying": "The queue is empty. Add a song to get things started.",
+      "addedBy": "Added by {{name}}",
+      "skip": "Skip",
+      "voteSkip": "Vote to skip",
+      "skipVotes": "{{count}} of {{needed}} votes to skip",
+      "queue": "Up next",
+      "queueEmpty": "Nothing queued.",
+      "upvote": "Upvote",
+      "removeFromQueue": "Remove",
+      "chat": "Chat",
+      "chatPlaceholder": "Say something",
+      "send": "Send",
+      "listeners": "Listeners",
+      "lyrics": "Lyrics",
+      "settings": "Room settings",
+      "saveSettings": "Save settings",
+      "recap": "Session recap",
+      "saveAsPlaylist": "Save as playlist",
+      "playlistSaved": "Saved “{{name}}” to your playlists",
+      "reactions": "React",
+      "host": "Host",
+      "cohost": "Co-host",
+      "makeCohost": "Make co-host",
+      "removeCohost": "Remove co-host",
+      "mute": "Mute",
+      "unmute": "Unmute",
+      "kick": "Remove from room",
+      "disconnected": "reconnecting…",
+      "muted": "muted"
+    },
+    "system": {
+      "joined": "{{name}} joined",
+      "left": "{{name}} left",
+      "kicked": "{{name}} was removed",
+      "host_changed": "{{name}} is now the host"
+    },
+    "recapDialog": {
+      "title": "Session recap",
+      "description": "{{room}} · {{minutes}} min",
+      "tracksPlayed": "Songs played",
+      "topContributor": "Top contributor",
+      "contributorValue": "{{name}} ({{count}} added)",
+      "mostAdded": "Most added",
+      "mostSkipped": "Most skipped",
+      "nothing": "Nothing yet",
+      "times": "×{{count}}",
+      "close": "Close"
+    },
+    "friends": {
+      "yourCode": "Your friend code",
+      "addPlaceholder": "Friend code",
+      "add": "Send request",
+      "incoming": "Requests",
+      "accept": "Accept",
+      "decline": "Decline",
+      "outgoing": "Waiting for a reply",
+      "list": "Friends",
+      "empty": "No friends yet. Share your code with someone.",
+      "online": "Online",
+      "offline": "Offline",
+      "inRoom": "In “{{room}}”",
+      "joinFriend": "Join",
+      "remove": "Remove"
+    },
+    "events": {
+      "create": "Schedule an event",
+      "empty": "No upcoming events.",
+      "title": "Title",
+      "titlePlaceholder": "Friday funk night",
+      "description": "Description",
+      "startsAt": "Starts at",
+      "submit": "Schedule",
+      "going": "Going",
+      "rsvp": "I'm going",
+      "start": "Start now",
+      "cancel": "Cancel event",
+      "live": "Live now",
+      "hostedBy": "Hosted by {{name}}",
+      "attendees_one": "{{count}} going",
+      "attendees_other": "{{count}} going",
+      "joinLive": "Join",
+      "startingToast": "“{{title}}” is starting"
+    },
+    "errors": {
+      "invalid_message": "Something went wrong sending that.",
+      "not_identified": "You are not signed in to the server yet.",
+      "bad_credentials": "The server rejected your identity.",
+      "rate_limited": "Slow down a little.",
+      "not_in_room": "You are not in a room.",
+      "already_in_room": "You are already in a room.",
+      "room_not_found": "That room doesn't exist anymore.",
+      "room_full": "That room is full.",
+      "invite_required": "That room needs an invite code.",
+      "banned": "You were removed from that room recently.",
+      "forbidden": "You don't have permission to do that.",
+      "muted": "You are muted in this room.",
+      "duplicate_track": "That song is already in the queue.",
+      "queue_full": "The queue is full.",
+      "member_limit": "You've reached the limit for that.",
+      "item_not_found": "That song is no longer in the queue.",
+      "user_not_found": "No one matches that.",
+      "already_friends": "You are already friends.",
+      "self_request": "That's your own code.",
+      "event_not_found": "That event isn't available.",
+      "event_in_past": "Pick a time in the future.",
+      "name_taken": "A room with that name already exists.",
+      "kicked": "You were removed from the room."
+    },
+    "taste": {
+      "title": "Import your genres",
+      "import": "Import from {{name}}",
+      "importFailed": "Couldn't import genres"
     }
   }
 }
