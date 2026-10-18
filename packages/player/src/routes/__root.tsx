@@ -8,6 +8,7 @@ import {
   ListMusicIcon,
   MicVocalIcon,
   MusicIcon,
+  RadioIcon,
   SettingsIcon,
   UserIcon,
 } from 'lucide-react';
@@ -111,6 +112,11 @@ const RootComponent = () => {
                   to="/lyrics"
                   icon={<MicVocalIcon />}
                   label={t('lyrics')}
+                />
+                <SidebarNavigationItem
+                  to="/crossjam"
+                  icon={<RadioIcon />}
+                  label={t('crossJam')}
                 />
                 <SidebarNavigationItem
                   to="/sources"

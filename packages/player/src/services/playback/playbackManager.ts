@@ -4,6 +4,7 @@ import type { QueueItem } from '@nuclearplayer/model';
 import { useQueueStore } from '../../stores/queueStore';
 import { getSetting } from '../../stores/settingsStore';
 import { useSoundStore } from '../../stores/soundStore';
+import { getQueueInterceptor } from '../crossJam/queueInterceptor';
 import { eventBus } from '../eventBus';
 
 export type StartTrackOptions = {
@@ -82,6 +83,12 @@ export class PlaybackManager {
     }
 
     eventBus.emit('trackFinished', item.track);
+
+    const interceptor = getQueueInterceptor();
+    if (interceptor) {
+      interceptor.trackEnded(item.id);
+      return;
+    }
 
     const repeatMode = (getSetting('core.playback.repeat') as string) ?? 'off';
     if (repeatMode === 'one') {

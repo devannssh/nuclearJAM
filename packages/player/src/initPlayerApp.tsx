@@ -6,6 +6,7 @@ import { applyThemeFromSettingsIfAny } from './services/advancedThemeService';
 import { startAdvancedThemeWatcher } from './services/advancedThemeWatcher';
 import { initBridgeHandler } from './services/bridge/bridgeHandler';
 import { registerBuiltInCoreSettings } from './services/coreSettings';
+import { initCrossJamSync } from './services/crossJam/jamSync';
 import { initDiscordHandler } from './services/discordHandler';
 import { initDiscoveryService } from './services/discoveryService';
 import { initHistoryService } from './services/history';
@@ -20,6 +21,7 @@ import { initMpdHandler } from './services/mpd';
 import { initPlaybackEventBridge } from './services/playbackEventBridge';
 import { hydratePluginsFromRegistry } from './services/plugins/pluginBootstrap';
 import { ytdlpEnsureInstalled } from './services/tauri/commands';
+import { initializeCrossJamStore } from './stores/crossJamStore';
 import { initializeFavoritesStore } from './stores/favoritesStore';
 import { initializePlaylistStore } from './stores/playlistStore';
 import { initializeQueueStore } from './stores/queueStore';
@@ -35,7 +37,9 @@ const initializeStores = () =>
     .then(() => initializeQueueStore())
     .then(() => initializeFavoritesStore())
     .then(() => initializeStreamVerificationStore())
-    .then(() => initializePlaylistStore());
+    .then(() => initializePlaylistStore())
+    .then(() => initializeCrossJamStore())
+    .then(() => initCrossJamSync());
 
 const initRemoteControl = () =>
   initMcpHandler()

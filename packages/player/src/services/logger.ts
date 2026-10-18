@@ -33,6 +33,7 @@ export const LOG_SCOPES = [
   'metadata',
   'playlists',
   'lyrics',
+  'crossjam',
 ] as const;
 
 export type LogScope = (typeof LOG_SCOPES)[number];

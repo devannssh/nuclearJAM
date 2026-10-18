@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CrossjamRouteImport } from './routes/crossjam'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as HistoryRouteImport } from './routes/history'
 import { Route as LyricsRouteImport } from './routes/lyrics'
@@ -27,6 +28,11 @@ import { Route as PlaylistsImportProviderIdRouteImport } from './routes/playlist
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CrossjamRoute = CrossjamRouteImport.update({
+  id: '/crossjam',
+  path: '/crossjam',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardRoute = DashboardRouteImport.update({
@@ -99,6 +105,7 @@ const PlaylistsImportProviderIdRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/crossjam': typeof CrossjamRoute
   '/dashboard': typeof DashboardRoute
   '/history': typeof HistoryRoute
   '/lyrics': typeof LyricsRoute
@@ -115,6 +122,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/crossjam': typeof CrossjamRoute
   '/dashboard': typeof DashboardRoute
   '/history': typeof HistoryRoute
   '/lyrics': typeof LyricsRoute
@@ -132,6 +140,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/crossjam': typeof CrossjamRoute
   '/dashboard': typeof DashboardRoute
   '/history': typeof HistoryRoute
   '/lyrics': typeof LyricsRoute
@@ -150,6 +159,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/crossjam'
     | '/dashboard'
     | '/history'
     | '/lyrics'
@@ -166,6 +176,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/crossjam'
     | '/dashboard'
     | '/history'
     | '/lyrics'
@@ -182,6 +193,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/crossjam'
     | '/dashboard'
     | '/history'
     | '/lyrics'
@@ -199,6 +211,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CrossjamRoute: typeof CrossjamRoute
   DashboardRoute: typeof DashboardRoute
   HistoryRoute: typeof HistoryRoute
   LyricsRoute: typeof LyricsRoute
@@ -221,6 +234,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/crossjam': {
+      id: '/crossjam'
+      path: '/crossjam'
+      fullPath: '/crossjam'
+      preLoaderRoute: typeof CrossjamRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dashboard': {
@@ -319,6 +339,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CrossjamRoute: CrossjamRoute,
   DashboardRoute: DashboardRoute,
   HistoryRoute: HistoryRoute,
   LyricsRoute: LyricsRoute,

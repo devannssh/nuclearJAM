@@ -12,6 +12,7 @@ import type {
 } from '@nuclearplayer/model';
 import { stripResolutionState } from '@nuclearplayer/model';
 
+import { getQueueInterceptor } from '../services/crossJam/queueInterceptor';
 import { eventBus } from '../services/eventBus';
 import { Logger } from '../services/logger';
 import { errorMessage } from '../utils/errorMessage';
@@ -26,6 +27,11 @@ type QueueStore = Queue & {
   isLoading: boolean;
   isReady: boolean;
   loadFromDisk: () => Promise<void>;
+  replaceItems: (
+    items: QueueItem[],
+    currentIndex: number,
+    options?: { persist?: boolean },
+  ) => void;
   addToQueue: (tracks: Track[]) => void;
   addNext: (tracks: Track[]) => void;
   addAt: (tracks: Track[], index: number) => void;
@@ -103,6 +109,9 @@ const emitSkip = (): void => {
 };
 
 const saveToDisk = async (): Promise<void> => {
+  if (getQueueInterceptor()) {
+    return;
+  }
   try {
     const state = useQueueStore.getState();
     await store.set('queue.items', state.items);
@@ -152,7 +161,19 @@ export const useQueueStore = create<QueueStore>((set, get) => ({
     Logger.queue.info(`Loaded ${resetItems.length} items from disk`);
   },
 
+  replaceItems: (items, currentIndex, options) => {
+    set({ items, currentIndex });
+    if (options?.persist) {
+      void saveToDisk();
+    }
+  },
+
   addToQueue: withPersistence((tracks: Track[]) => {
+    const interceptor = getQueueInterceptor();
+    if (interceptor) {
+      interceptor.addTracks(tracks);
+      return;
+    }
     set(
       produce((state: QueueStore) => {
         const newItems = tracks.map(createQueueItem);
@@ -168,6 +189,11 @@ export const useQueueStore = create<QueueStore>((set, get) => ({
   },
 
   addAt: withPersistence((tracks: Track[], index: number) => {
+    const interceptor = getQueueInterceptor();
+    if (interceptor) {
+      interceptor.addTracks(tracks);
+      return;
+    }
     set(
       produce((state: QueueStore) => {
         const newItems = tracks.map(createQueueItem);
@@ -180,6 +206,11 @@ export const useQueueStore = create<QueueStore>((set, get) => ({
   }),
 
   removeByIds: withPersistence((ids: string[]) => {
+    const interceptor = getQueueInterceptor();
+    if (interceptor) {
+      interceptor.removeItems(ids);
+      return;
+    }
     const currentItem = get().getCurrentItem();
     const currentItemRemoved = currentItem && ids.includes(currentItem.id);
 
@@ -208,6 +239,13 @@ export const useQueueStore = create<QueueStore>((set, get) => ({
   }),
 
   removeByIndices: withPersistence((indices: number[]) => {
+    const interceptor = getQueueInterceptor();
+    if (interceptor) {
+      interceptor.removeItems(
+        indices.flatMap((index) => get().items[index]?.id ?? []),
+      );
+      return;
+    }
     const currentIndex = get().currentIndex;
     const currentIndexRemoved = indices.includes(currentIndex);
 
@@ -236,6 +274,9 @@ export const useQueueStore = create<QueueStore>((set, get) => ({
   }),
 
   clearQueue: withPersistence(() => {
+    if (getQueueInterceptor()) {
+      return;
+    }
     const itemCount = get().items.length;
     set({ items: [], currentIndex: 0 });
     useSoundStore.getState().stop();
@@ -243,6 +284,9 @@ export const useQueueStore = create<QueueStore>((set, get) => ({
   }),
 
   reorder: withPersistence((fromIndex: number, toIndex: number) => {
+    if (getQueueInterceptor()) {
+      return;
+    }
     set(
       produce((state: QueueStore) => {
         const [movedItem] = state.items.splice(fromIndex, 1);
@@ -333,6 +377,11 @@ export const useQueueStore = create<QueueStore>((set, get) => ({
   },
 
   goToNext: withPersistence(() => {
+    const interceptor = getQueueInterceptor();
+    if (interceptor) {
+      interceptor.skip();
+      return;
+    }
     const state = get();
     const nextIndex = getDirectionalIndex(state, 'forward');
     if (nextIndex !== state.currentIndex) {
@@ -344,6 +393,9 @@ export const useQueueStore = create<QueueStore>((set, get) => ({
   }),
 
   goToPrevious: withPersistence(() => {
+    if (getQueueInterceptor()) {
+      return;
+    }
     const state = get();
     const previousIndex = getDirectionalIndex(state, 'backward');
     if (previousIndex !== state.currentIndex) {
@@ -355,6 +407,9 @@ export const useQueueStore = create<QueueStore>((set, get) => ({
   }),
 
   goToIndex: withPersistence((index: number) => {
+    if (getQueueInterceptor()) {
+      return;
+    }
     const { items, currentIndex } = get();
     if (index >= 0 && index < items.length && index !== currentIndex) {
       emitSkip();
@@ -364,6 +419,9 @@ export const useQueueStore = create<QueueStore>((set, get) => ({
   }),
 
   goToId: withPersistence((id: string) => {
+    if (getQueueInterceptor()) {
+      return;
+    }
     const { items, currentIndex } = get();
     const index = items.findIndex((item) => item.id === id);
     if (index !== -1 && index !== currentIndex) {

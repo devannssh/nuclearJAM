@@ -1,5 +1,23 @@
 [
   {
+    "date": "2026-10-18T00:00",
+    "description": "Added Cross Jam. Listen together with other Nuclear users in live rooms: browse rooms ranked by how well their genres match yours, share a queue with upvotes and skips, chat, react, and keep a recap of the session. Includes friends, scheduled events, and genre import from taste plugins. Needs a Cross Jam server address in Settings.",
+    "type": "feature",
+    "contributors": [
+      "devannssh"
+    ],
+    "tags": [
+      {
+        "label": "Cross Jam",
+        "color": "purple"
+      },
+      {
+        "label": "Integrations",
+        "color": "cyan"
+      }
+    ]
+  },
+  {
     "date": "2026-10-16T00:00",
     "description": "Fixed silent YouTube playback on Linux. The AppImage now bundles the GStreamer libav plugin, and the AUR, .deb, and .rpm packages require it.",
     "type": "fix",

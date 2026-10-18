@@ -945,6 +945,30 @@ exports[`Settings view > (Snapshot) renders the settings view 1`] = `
                                   </p>
                                 </div>
                                 <div
+                                  class="flex w-full flex-col gap-2"
+                                >
+                                  <label
+                                    class="text-foreground text-sm font-semibold"
+                                    for="input-:rt:"
+                                    id="input-:rt:-label"
+                                  >
+                                    Cross Jam server
+                                  </label>
+                                  <input
+                                    class="border-border focus-visible:ring-ring focus-visible:ring-offset-muted w-full px-3 transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none surface-input placeholder:text-input-foreground/60 h-10 rounded-md border-(length:--border-width)"
+                                    data-headlessui-state=""
+                                    id="input-:rt:"
+                                    type="text"
+                                    value=""
+                                  />
+                                  <p
+                                    class="text-foreground/60 text-sm select-none"
+                                    id="input-:rt:-description"
+                                  >
+                                    WebSocket address of the Cross Jam relay server, for example ws://localhost:4180/jam.
+                                  </p>
+                                </div>
+                                <div
                                   class="flex flex-col gap-2"
                                 >
                                   <div
@@ -955,7 +979,7 @@ exports[`Settings view > (Snapshot) renders the settings view 1`] = `
                                       aria-label="Enable MCP Server"
                                       class="border-border focus:ring-ring focus:ring-offset-muted relative inline-flex h-6 w-11 cursor-pointer items-center rounded-full border-(length:--border-width) transition-all focus:ring-2 focus:ring-offset-2 focus:outline-none data-checked:surface-primary surface-input data-disabled:cursor-not-allowed data-disabled:opacity-50 group"
                                       data-headlessui-state=""
-                                      id="headlessui-switch-:rt:"
+                                      id="headlessui-switch-:rv:"
                                       role="switch"
                                       tabindex="0"
                                       type="button"
@@ -1043,7 +1067,7 @@ exports[`Settings view > (Snapshot) renders the settings view 1`] = `
                                       aria-label="Enable MPD Server"
                                       class="border-border focus:ring-ring focus:ring-offset-muted relative inline-flex h-6 w-11 cursor-pointer items-center rounded-full border-(length:--border-width) transition-all focus:ring-2 focus:ring-offset-2 focus:outline-none data-checked:surface-primary surface-input data-disabled:cursor-not-allowed data-disabled:opacity-50 group"
                                       data-headlessui-state=""
-                                      id="headlessui-switch-:ru:"
+                                      id="headlessui-switch-:r10:"
                                       role="switch"
                                       tabindex="0"
                                       type="button"
@@ -1131,7 +1155,7 @@ exports[`Settings view > (Snapshot) renders the settings view 1`] = `
                                       aria-label="Discord Rich Presence"
                                       class="border-border focus:ring-ring focus:ring-offset-muted relative inline-flex h-6 w-11 cursor-pointer items-center rounded-full border-(length:--border-width) transition-all focus:ring-2 focus:ring-offset-2 focus:outline-none data-checked:surface-primary surface-input data-disabled:cursor-not-allowed data-disabled:opacity-50 group"
                                       data-headlessui-state=""
-                                      id="headlessui-switch-:rv:"
+                                      id="headlessui-switch-:r11:"
                                       role="switch"
                                       tabindex="0"
                                       type="button"
@@ -1187,8 +1211,8 @@ exports[`Settings view > (Snapshot) renders the settings view 1`] = `
                                     >
                                       <label
                                         class="text-foreground font-semibold"
-                                        for=":r10:"
-                                        id=":r10:-label"
+                                        for=":r12:"
+                                        id=":r12:-label"
                                       >
                                         Discovery variety
                                       </label>
@@ -1223,13 +1247,13 @@ exports[`Settings view > (Snapshot) renders the settings view 1`] = `
                                         </div>
                                       </div>
                                       <input
-                                        aria-labelledby=":r10:-label"
+                                        aria-labelledby=":r12:-label"
                                         aria-valuemax="1"
                                         aria-valuemin="0"
                                         aria-valuenow="0.5"
                                         aria-valuetext="0.5"
                                         class="absolute inset-0 z-[1] h-6 w-full appearance-none opacity-0 cursor-pointer"
-                                        id=":r10:"
+                                        id=":r12:"
                                         max="1"
                                         min="0"
                                         step="0.05"
@@ -1254,35 +1278,10 @@ exports[`Settings view > (Snapshot) renders the settings view 1`] = `
                                 >
                                   <label
                                     class="text-foreground text-sm font-semibold"
-                                    for="input-:r11:"
-                                    id="input-:r11:-label"
-                                  >
-                                    Skip duration
-                                  </label>
-                                  <input
-                                    class="border-border focus-visible:ring-ring focus-visible:ring-offset-muted w-full px-3 transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none surface-input placeholder:text-input-foreground/60 h-10 rounded-md border-(length:--border-width)"
-                                    data-headlessui-state=""
-                                    id="input-:r11:"
-                                    inputmode="numeric"
-                                    type="number"
-                                    value="5"
-                                  />
-                                  <p
-                                    class="text-foreground/60 text-sm select-none"
-                                    id="input-:r11:-description"
-                                  >
-                                    Number of seconds to skip forward/backward
-                                  </p>
-                                </div>
-                                <div
-                                  class="flex w-full flex-col gap-2"
-                                >
-                                  <label
-                                    class="text-foreground text-sm font-semibold"
                                     for="input-:r13:"
                                     id="input-:r13:-label"
                                   >
-                                    Crossfade
+                                    Skip duration
                                   </label>
                                   <input
                                     class="border-border focus-visible:ring-ring focus-visible:ring-offset-muted w-full px-3 transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none surface-input placeholder:text-input-foreground/60 h-10 rounded-md border-(length:--border-width)"
@@ -1290,13 +1289,13 @@ exports[`Settings view > (Snapshot) renders the settings view 1`] = `
                                     id="input-:r13:"
                                     inputmode="numeric"
                                     type="number"
-                                    value="0"
+                                    value="5"
                                   />
                                   <p
                                     class="text-foreground/60 text-sm select-none"
                                     id="input-:r13:-description"
                                   >
-                                    Crossfade duration between tracks in milliseconds
+                                    Number of seconds to skip forward/backward
                                   </p>
                                 </div>
                                 <div
@@ -1307,7 +1306,7 @@ exports[`Settings view > (Snapshot) renders the settings view 1`] = `
                                     for="input-:r15:"
                                     id="input-:r15:-label"
                                   >
-                                    Stream expiry time
+                                    Crossfade
                                   </label>
                                   <input
                                     class="border-border focus-visible:ring-ring focus-visible:ring-offset-muted w-full px-3 transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none surface-input placeholder:text-input-foreground/60 h-10 rounded-md border-(length:--border-width)"
@@ -1315,13 +1314,13 @@ exports[`Settings view > (Snapshot) renders the settings view 1`] = `
                                     id="input-:r15:"
                                     inputmode="numeric"
                                     type="number"
-                                    value="3600000"
+                                    value="0"
                                   />
                                   <p
                                     class="text-foreground/60 text-sm select-none"
                                     id="input-:r15:-description"
                                   >
-                                    How long before a resolved stream URL is considered expired and needs re-resolution
+                                    Crossfade duration between tracks in milliseconds
                                   </p>
                                 </div>
                                 <div
@@ -1332,7 +1331,7 @@ exports[`Settings view > (Snapshot) renders the settings view 1`] = `
                                     for="input-:r17:"
                                     id="input-:r17:-label"
                                   >
-                                    Stream resolution retries
+                                    Stream expiry time
                                   </label>
                                   <input
                                     class="border-border focus-visible:ring-ring focus-visible:ring-offset-muted w-full px-3 transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none surface-input placeholder:text-input-foreground/60 h-10 rounded-md border-(length:--border-width)"
@@ -1340,11 +1339,36 @@ exports[`Settings view > (Snapshot) renders the settings view 1`] = `
                                     id="input-:r17:"
                                     inputmode="numeric"
                                     type="number"
-                                    value="3"
+                                    value="3600000"
                                   />
                                   <p
                                     class="text-foreground/60 text-sm select-none"
                                     id="input-:r17:-description"
+                                  >
+                                    How long before a resolved stream URL is considered expired and needs re-resolution
+                                  </p>
+                                </div>
+                                <div
+                                  class="flex w-full flex-col gap-2"
+                                >
+                                  <label
+                                    class="text-foreground text-sm font-semibold"
+                                    for="input-:r19:"
+                                    id="input-:r19:-label"
+                                  >
+                                    Stream resolution retries
+                                  </label>
+                                  <input
+                                    class="border-border focus-visible:ring-ring focus-visible:ring-offset-muted w-full px-3 transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none surface-input placeholder:text-input-foreground/60 h-10 rounded-md border-(length:--border-width)"
+                                    data-headlessui-state=""
+                                    id="input-:r19:"
+                                    inputmode="numeric"
+                                    type="number"
+                                    value="3"
+                                  />
+                                  <p
+                                    class="text-foreground/60 text-sm select-none"
+                                    id="input-:r19:-description"
                                   >
                                     Number of times to retry resolving a stream URL before moving to the next candidate
                                   </p>
@@ -1361,7 +1385,7 @@ exports[`Settings view > (Snapshot) renders the settings view 1`] = `
                                       class="border-border focus:ring-ring focus:ring-offset-muted relative inline-flex h-6 w-11 cursor-pointer items-center rounded-full border-(length:--border-width) transition-all focus:ring-2 focus:ring-offset-2 focus:outline-none data-checked:surface-primary surface-input data-disabled:cursor-not-allowed data-disabled:opacity-50 group"
                                       data-checked=""
                                       data-headlessui-state="checked"
-                                      id="headlessui-switch-:r19:"
+                                      id="headlessui-switch-:r1b:"
                                       role="switch"
                                       tabindex="0"
                                       type="button"
@@ -1394,7 +1418,7 @@ exports[`Settings view > (Snapshot) renders the settings view 1`] = `
                                       class="border-border focus:ring-ring focus:ring-offset-muted relative inline-flex h-6 w-11 cursor-pointer items-center rounded-full border-(length:--border-width) transition-all focus:ring-2 focus:ring-offset-2 focus:outline-none data-checked:surface-primary surface-input data-disabled:cursor-not-allowed data-disabled:opacity-50 group"
                                       data-checked=""
                                       data-headlessui-state="checked"
-                                      id="headlessui-switch-:r1a:"
+                                      id="headlessui-switch-:r1c:"
                                       role="switch"
                                       tabindex="0"
                                       type="button"
@@ -1451,7 +1475,7 @@ exports[`Settings view > (Snapshot) renders the settings view 1`] = `
                                       class="border-border focus:ring-ring focus:ring-offset-muted relative inline-flex h-6 w-11 cursor-pointer items-center rounded-full border-(length:--border-width) transition-all focus:ring-2 focus:ring-offset-2 focus:outline-none data-checked:surface-primary surface-input data-disabled:cursor-not-allowed data-disabled:opacity-50 group"
                                       data-checked=""
                                       data-headlessui-state="checked"
-                                      id="headlessui-switch-:r1b:"
+                                      id="headlessui-switch-:r1d:"
                                       role="switch"
                                       tabindex="0"
                                       type="button"
@@ -1508,7 +1532,7 @@ exports[`Settings view > (Snapshot) renders the settings view 1`] = `
                                       class="border-border focus:ring-ring focus:ring-offset-muted relative inline-flex h-6 w-11 cursor-pointer items-center rounded-full border-(length:--border-width) transition-all focus:ring-2 focus:ring-offset-2 focus:outline-none data-checked:surface-primary surface-input data-disabled:cursor-not-allowed data-disabled:opacity-50 group"
                                       data-checked=""
                                       data-headlessui-state="checked"
-                                      id="headlessui-switch-:r1c:"
+                                      id="headlessui-switch-:r1e:"
                                       role="switch"
                                       tabindex="0"
                                       type="button"
@@ -1540,7 +1564,7 @@ exports[`Settings view > (Snapshot) renders the settings view 1`] = `
                                       aria-label="Auto-install updates"
                                       class="border-border focus:ring-ring focus:ring-offset-muted relative inline-flex h-6 w-11 cursor-pointer items-center rounded-full border-(length:--border-width) transition-all focus:ring-2 focus:ring-offset-2 focus:outline-none data-checked:surface-primary surface-input data-disabled:cursor-not-allowed data-disabled:opacity-50 group"
                                       data-headlessui-state=""
-                                      id="headlessui-switch-:r1d:"
+                                      id="headlessui-switch-:r1f:"
                                       role="switch"
                                       tabindex="0"
                                       type="button"

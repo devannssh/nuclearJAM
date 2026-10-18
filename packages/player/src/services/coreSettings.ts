@@ -308,6 +308,15 @@ export const CORE_SETTINGS: SettingDefinition[] = [
     widget: { type: 'info' },
   },
   {
+    id: 'crossJam.serverUrl',
+    title: 'preferences.integrations.crossJam.serverUrl.title',
+    description: 'preferences.integrations.crossJam.serverUrl.description',
+    category: 'integrations',
+    kind: 'string',
+    default: '',
+    widget: { type: 'text' },
+  },
+  {
     id: 'integrations.mcp.enabled',
     title: 'preferences.integrations.mcp.enabled.title',
     description: 'preferences.integrations.mcp.enabled.description',
